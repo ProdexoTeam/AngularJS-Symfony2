@@ -5,14 +5,14 @@ namespace BackOffice\SchoolBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
- * BackOffice\SchoolBundle\Document\Eleve
+ * BackOffice\SchoolBundle\Document\Classe
  *
  * @ODM\Document(
- *     repositoryClass="BackOffice\SchoolBundle\Document\EleveRepository"
+ *     repositoryClass="BackOffice\SchoolBundle\Document\ClasseRepository"
  * )
  * @ODM\ChangeTrackingPolicy("DEFERRED_IMPLICIT")
  */
-class Eleve
+class Classe
 {
     /**
      * @var MongoId $id
@@ -28,13 +28,10 @@ class Eleve
      */
     protected $name;
     
-      /**
-     *  @var
-     *  @ODM\ReferenceOne(targetDocument="Classe")
-     *  
+    /** @ODM\ReferenceMany(targetDocument="Eleve", cascade={"persist"})
+     *  @var Eleve[]
      */
-    private $classe;
-
+    private $eleve;
 
 
     /**
@@ -67,27 +64,5 @@ class Eleve
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set classe
-     *
-     * @param BackOffice\SchoolBundle\Document\Classe $classe
-     * @return self
-     */
-    public function setClasse(\BackOffice\SchoolBundle\Document\Classe $classe)
-    {
-        $this->classe = $classe;
-        return $this;
-    }
-
-    /**
-     * Get classe
-     *
-     * @return BackOffice\SchoolBundle\Document\Classe $classe
-     */
-    public function getClasse()
-    {
-        return $this->classe;
     }
 }

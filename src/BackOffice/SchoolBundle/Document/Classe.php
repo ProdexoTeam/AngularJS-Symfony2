@@ -65,4 +65,38 @@ class Classe
     {
         return $this->name;
     }
+    public function __construct()
+    {
+        $this->eleve = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add eleve
+     *
+     * @param BackOffice\SchoolBundle\Document\Eleve $eleve
+     */
+    public function addEleve(\BackOffice\SchoolBundle\Document\Eleve $eleve)
+    {
+        $this->eleve[] = $eleve;
+    }
+
+    /**
+     * Remove eleve
+     *
+     * @param BackOffice\SchoolBundle\Document\Eleve $eleve
+     */
+    public function removeEleve(\BackOffice\SchoolBundle\Document\Eleve $eleve)
+    {
+        $this->eleve->removeElement($eleve);
+    }
+
+    /**
+     * Get eleve
+     *
+     * @return \Doctrine\Common\Collections\Collection $eleve
+     */
+    public function getEleve()
+    {
+        return $this->eleve;
+    }
 }
