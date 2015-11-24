@@ -18,6 +18,7 @@ class AppKernel extends Kernel {
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new BackOffice\SchoolBundle\BackOfficeSchoolBundle(),
             new BackOffice\UserBundle\BackOfficeUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
