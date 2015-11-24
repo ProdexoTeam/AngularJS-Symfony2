@@ -17,7 +17,8 @@ class AppKernel extends Kernel {
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
-           
+            new BackOffice\SchoolBundle\BackOfficeSchoolBundle(),
+            new BackOffice\UserBundle\BackOfficeUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
