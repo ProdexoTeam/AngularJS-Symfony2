@@ -1,0 +1,6 @@
+eleve:
+    path:     /
+    defaults: { _controller: BackOfficeSchoolBundle:Eleve:index}
+eleve_add:
+    path:     /add
+    defaults: { _controller: "BackOfficeSchoolBundle:Eleve:add" }

@@ -1,0 +1,6 @@
+classe:
+    path:     /
+    defaults: { _controller: BackOfficeSchoolBundle:Classe:index }
+classe_add:
+    path:     /add
+    defaults: { _controller: BackOfficeSchoolBundle:Classe:add }

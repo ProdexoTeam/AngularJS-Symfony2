@@ -1,3 +1,11 @@
 back_office_school_homepage:
     path:     /hello/{name}
     defaults: { _controller: BackOfficeSchoolBundle:Default:index }
+    
+classe:
+    resource: "@BackOfficeSchoolBundle/Resources/config/routing/classe.yml"
+    prefix:   /classe
+    
+eleve:
+    resource: "@BackOfficeSchoolBundle/Resources/config/routing/eleve.yml"
+    prefix:   /eleve
