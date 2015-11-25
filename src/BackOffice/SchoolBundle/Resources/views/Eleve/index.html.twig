@@ -1,2 +1,22 @@
-{# empty Twig template #}
-test
+{% block body %}
+  
+    <table >
+        <thead>
+            <tr>
+                <th>Eleve</th>
+                <th>Classe</th>
+
+                <th width="20%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in eleves %}
+                <tr class="">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.classe }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -90,4 +90,7 @@ class Eleve
     {
         return $this->classe;
     }
+    public function __toString() {
+        return $this->getName();
+    }
 }

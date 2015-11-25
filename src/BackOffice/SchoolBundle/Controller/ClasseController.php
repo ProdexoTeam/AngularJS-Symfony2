@@ -9,10 +9,11 @@ use BackOffice\SchoolBundle\Form\ClasseType;
 class ClasseController extends Controller {
 
     public function indexAction() {
-
-        $classe = $this->getDoctrine()
-                ->getRepository('BackOfficeSchoolBundle:Classe')
+        $dm = $this->get('doctrine_mongodb')->getManager();
+        
+        $classe = $dm->getRepository('BackOfficeSchoolBundle:Classe')
                 ->findAll();
+        
         return $this->render('BackOfficeSchoolBundle:Classe:index.html.twig', array('classes' => $classe));
     }
 
@@ -25,7 +26,7 @@ class ClasseController extends Controller {
             $form->bind($request);
             //echo "<pre>";print_r($page);exit;
             if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
+                $em = $this->get('doctrine_mongodb')->getManager();
                 $em->persist($classe);
                 $em->flush();
                 return $this->redirect($this->generateUrl('classe'));
@@ -33,7 +34,7 @@ class ClasseController extends Controller {
                 echo $form->getErrors();
             }
         }
-        return $this->render('BackHotelBundle:Classe:add.html.twig', array('form' => $form->createView()));
+        return $this->render('BackOfficeSchoolBundle:Classe:add.html.twig', array('form' => $form->createView()));
     }
 
 }

@@ -12,7 +12,7 @@ class ClasseType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('eleve')
+        
         ;
     }
 

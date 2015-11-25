@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    translator:      ~
+    #translator:      ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -84,7 +84,7 @@ doctrine_mongodb:
         default:
             server: mongodb://localhost:27017
             options: {}
-    default_database: ecole
+    default_database: eleve
     document_managers:
         default:
             auto_mapping: true

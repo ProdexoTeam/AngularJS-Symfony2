@@ -3,6 +3,7 @@
 namespace BackOffice\SchoolBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use BackOffice\SchoolBundle\Document\Eleve;
 
 /**
  * BackOffice\SchoolBundle\Document\Classe
@@ -98,5 +99,9 @@ class Classe
     public function getEleve()
     {
         return $this->eleve;
+    }
+    
+     public function __toString() {
+        return $this->getName();
     }
 }

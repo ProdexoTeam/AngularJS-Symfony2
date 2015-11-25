@@ -68,4 +68,26 @@ class Eleve
     {
         return $this->name;
     }
+
+    /**
+     * Set classe
+     *
+     * @param BackOffice\SchoolBundle\Document\Classe $classe
+     * @return self
+     */
+    public function setClasse(\BackOffice\SchoolBundle\Document\Classe $classe)
+    {
+        $this->classe = $classe;
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return BackOffice\SchoolBundle\Document\Classe $classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
 }
