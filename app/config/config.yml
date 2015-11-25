@@ -84,7 +84,7 @@ doctrine_mongodb:
         default:
             server: mongodb://localhost:27017
             options: {}
-    default_database: eleve
+    default_database: ecole
     document_managers:
         default:
             auto_mapping: true
