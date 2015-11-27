@@ -19,6 +19,7 @@ class AppKernel extends Kernel {
             new BackOffice\SchoolBundle\BackOfficeSchoolBundle(),
             new BackOffice\UserBundle\BackOfficeUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
