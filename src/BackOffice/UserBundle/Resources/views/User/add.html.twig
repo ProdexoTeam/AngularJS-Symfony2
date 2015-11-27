@@ -1,0 +1,9 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ form_start(form, {'method': 'POST'}) }}
+    {{ form_widget(form.username) }}
+    {{ form_widget(form.groups) }}
+    {{ form_widget(form._token) }}
+    <input type="submit"/>
+    {{ form_end(form) }}
+{% endblock%}

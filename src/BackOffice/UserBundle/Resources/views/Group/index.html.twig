@@ -1,0 +1,8 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    Liste des groupes: <br>
+    {% for group in documents %}
+      -   {{group.name}} |  <a href="{{ path('back_office_roles_edit',{'id':group.id})}}">Modifier</a> <br>
+    {% endfor %}
+    <a href="{{ path('back_office_group_add')}}">Ajouter un groupe</a>
+{% endblock %}

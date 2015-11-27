@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      ~
+    translator:      ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -93,3 +93,5 @@ fos_user:
     db_driver: mongodb
     firewall_name: main
     user_class: BackOffice\UserBundle\Document\User
+    group:
+        group_class: BackOffice\UserBundle\Document\Group

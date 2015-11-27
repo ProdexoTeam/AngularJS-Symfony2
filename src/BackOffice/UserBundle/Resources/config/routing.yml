@@ -1,3 +1,18 @@
+#Users
 back_office_user_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: BackOfficeUserBundle:Default:index }
+    path:     /list_user
+    defaults: { _controller: BackOfficeUserBundle:User:index }
+back_office_user_add:
+    path:     /adduser
+    defaults: { _controller: BackOfficeUserBundle:User:add }
+#Groups
+back_office_group_homepage:
+    path:     /list_group
+    defaults: { _controller: BackOfficeUserBundle:Group:index }
+back_office_group_add:
+    path:     /addgroup
+    defaults: { _controller: BackOfficeUserBundle:Group:add }
+#Roles
+back_office_roles_edit:
+    path:   /group/{id}/roles
+    defaults: { _controller: BackOfficeUserBundle:Role:edit }

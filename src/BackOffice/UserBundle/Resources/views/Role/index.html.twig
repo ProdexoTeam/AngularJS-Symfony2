@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    Modifier le groupe: <br>
+    {% for role in group.roles %}
+        -   {{role}} <br>
+    {% endfor %}
+    {{ form_start(form, {'method': 'POST'}) }}
+    {{ form_widget(form.name) }}
+
+    {{form_widget(form.roles)}}
+    <input type="submit"/>
+    {{form_end(form)}}
+
+{% endblock %}

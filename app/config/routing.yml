@@ -1,6 +1,6 @@
 back_office_user:
     resource: "@BackOfficeUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /usermanagement
 
 back_office_school:
     resource: "@BackOfficeSchoolBundle/Resources/config/routing.yml"

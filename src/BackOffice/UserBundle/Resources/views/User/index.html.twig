@@ -1,0 +1,8 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    Liste des utilisateurs: <br>
+    {% for user in documents %}
+        -       {{user.username}} /  {{user.groups}} <br>
+    {% endfor %}
+    <a href="{{ path('back_office_user_add')}}">Ajouter un utilisateur</a>
+{% endblock %}
