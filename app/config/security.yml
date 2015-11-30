@@ -4,8 +4,8 @@ security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
     role_hierarchy:
-        Role_student:       Show_student,List_student,Add_student,Delete_student
-        Role_class: Show_class,List_class,Add_class,Delete_class
+        Role_User:       back_office_user_homepage,back_office_user_add
+        Role_groupe: back_office_group_homepage,back_office_group_add,back_office_roles_edit
     providers:
         in_memory:
             memory: ~

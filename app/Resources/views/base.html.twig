@@ -2,11 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- materialize CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/css/materialize.min.css') }}" media="screen,projection">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/perfect-scrollbar.css') }}">
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body ng-app="MonApp">
+<body>
     <div ng-view></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
@@ -17,9 +28,135 @@
         });
     </script>
 
-{% block body %}{% endblock %}
- <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <nav id="header" class="blue nav-fixed" role="navigation">
+        <div class="wrap-container">
+            <div class="nav-wrapper">
+
+                <ul class="right">
+                    <li><a href="#" class="toggle-fullscreen"><i class="mdi-navigation-fullscreen"></i></a></li>
+                    <li id="top-search"><a href="#"><i class="mdi-action-search"></i></a></li>
+                    <li><a href="#" class="dropdown-button dropdown-button-large waves-effect waves-light"  data-beloworigin="true" data-activates="notif-dropdown"><i class="mdi-social-notifications"></i></a>
+
+                        <ul id="notif-dropdown" class="dropdown-content collection">
+                            <li class="collection-item avatar">
+                                <i class="mdi-communication-live-help circle"></i>
+                                <span class="title">Ullam sint ipsum</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle">folder</i>
+                                <span class="title">Ullam sint ipsum</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle green">insert_chart</i>
+                                <span class="title">Ullam sint ipsum</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle red">play_arrow</i>
+                                <span class="title">Ullam sint ipsum</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus</p>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#" class="center red white-text"><i class="mdi-navigation-arrow-forward right"></i>Voir tous</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="mdi-navigation-more-vert"></i></a></li>
+                    <!-- Top Search Content -->
+                    <div id="top-search-wrap">
+                        <input type="text">
+                        <i id="top-search-close" class="mdi-navigation-close"></i>
+                    </div>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <a id="logo-container" href="#" class=""><img src="{{asset('assets/img/logo_resoxia_white.png')}}" alt="logo Resoxia" /></a>
+
+            </div>
+        </div>
+    </nav>
+
+    <ul id="nav-mobile" class="side-nav fixed leftside-navigation ps-container ps-active-y side-desktop">
+        <li class="user-details blue darken-2">
+            <div class="row">
+                <div class="col col s4 m4 l4">
+                    <img src="{{ asset('assets/img/avatar-small.png')}}" alt="user" class="circle responsive-img valign profile-image">
+                </div>
+                <div class="col col s8 m8 l8">
+
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-beloworigin="true" data-activates="profile-dropdown">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <ul id="profile-dropdown" class="dropdown-content" style="width: 128px; position: absolute; top: 57px; left: 101.234px; opacity: 1; display: none;">
+                        <li><a href="#"><i class="mdi-action-face-unlock"></i> Profil</a>
+                        </li>
+                        <li><a href="#"><i class="mdi-action-settings"></i> Paramètres</a>
+                        </li>
+                        <li><a href="#"><i class="mdi-communication-live-help"></i> Aide</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="mdi-action-lock-outline"></i> Verrouiller</a>
+                        </li>
+                        <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Déconnexion</a>
+                        </li>
+                    </ul>
+                    <p class="user-roal">Administrator</p>
+                </div>
+            </div>
+        </li>
+        <li><a href="#" class="waves-effect waves-light"><i class="mdi-action-dashboard"></i><span>Dashboard</span></a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li><a class="collapsible-header waves-effect waves-light" href="#"><i class="mdi-action-account-circle"></i><span>Gestion des accès</span></a>
+                    <ul class='collapsible-body'>
+                        <li><a href="{{path('back_office_user_homepage')}}" class="waves-effect waves-light">Utilisateurs</a></li>
+                        <li><a href="{{path('back_office_group_homepage')}}" class="waves-effect waves-light">Groupes</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li><a class="collapsible-header waves-effect waves-light" href="#"><i class="mdi-action-account-balance"></i><span>Gestion de l'école</span></a>
+                    <ul class='collapsible-body'>
+                        <li><a href="{{path('classe')}}" class="waves-effect waves-light">Classes</a></li>
+                        <li><a href="{{path('eleve')}}" class="waves-effect waves-light">Elèves</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href=""><span></span></a></li>
+    </ul>
+
+    <div id="main-content">
+        <div class="wrap-container">
+ {% block body %}{% endblock %}
+        </div>
+    </div>
+    <footer class="page-footer blue fixed">
+        <div class="footer-copyright">
+            <div class="container center">Copyright © 2015 | Resoxia</div>
+        </div>
+    </footer>
+</div>
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+<!-- materialize js -->
+<script type="text/javascript" src="{{ asset('assets/js/jquery-1.11.2.min.js') }}"></script>
+<!-- materialize js -->
+<script type="text/javascript" src="{{ asset('assets/js/materialize.min.js') }}"></script>
+<!-- perfect-scrollbar js -->
+<script type="text/javascript" src="{{ asset('assets/js/perfect-scrollbar.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/side-navigation.js') }}"></script>
+<!-- main Javascript` -->
+<script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
+<script type="text/javascript">
+        //Toast message in load page
+        $(window).load(function () {
+            // Materialize.toast(message, displayLength, className, completeCallback);
+            Materialize.toast('Bienvenue dans ce projet test !', 2000) // 4000 is the duration of the toast
+        });
+</script>
 {% block javascripts %}
 
 {% endblock %}

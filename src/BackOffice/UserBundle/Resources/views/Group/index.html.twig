@@ -1,8 +1,41 @@
 {% extends "::base.html.twig" %}
 {% block body %}
-    Liste des groupes: <br>
-    {% for group in documents %}
-      -   {{group.name}} |  <a href="{{ path('back_office_roles_edit',{'id':group.id})}}">Modifier</a> <br>
-    {% endfor %}
-    <a href="{{ path('back_office_group_add')}}">Ajouter un groupe</a>
+    <p  class="caption">Cette interface permet de gérer les groupes d'utilisateurs.<br>Ajoutez de nouveaux groupes puis modifiez-les pour leurs assigner des droit d'accès.</p>
+    <div id="badge-example">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="right">
+                    <a href="{{ path('back_office_group_add')}}" class="btn waves-effect waves-light"><i class="mdi-image-edit right"></i>Ajouter un groupe</a>
+                </div>
+            </div>
+        </div>
+        <h4 class="header">Liste des groupes:</h4>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="table-responsive">
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th data-field="name">Nom</th>
+                                <th data-field="name">Rôles</th>
+                                <th data-field="action">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>    {% for group in documents %}
+
+                            <tr>
+                                <td>{{group.name}}</td>
+                                <td>  {% set roles = group.roles %}{% for role in roles %}{{role}} | {% endfor %}</td>
+
+                                <td><a class="btn-floating blue darken-1 waves-effect waves-light tooltipped" data-position="top"
+                                       data-tooltip="Modifier" href="{{ path('back_office_roles_edit',{'id':group.id})}}" ><i class="mdi-image-edit"></i></a></td>
+                            </tr>    {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,8 +1,39 @@
 {% extends "::base.html.twig" %}
 {% block body %}
-    Liste des utilisateurs: <br>
-    {% for user in documents %}
-        -       {{user.username}} /  {{user.groups}} <br>
-    {% endfor %}
-    <a href="{{ path('back_office_user_add')}}">Ajouter un utilisateur</a>
+    <p  class="caption">Cette interface permet de gérer les utilisateurs.<br>Ajoutez de nouveaux utilisateurs et affectez-leurs un groupe.</p>
+    <div id="badge-example">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="right">
+                    <a href="{{ path('back_office_user_add')}}" class="btn waves-effect waves-light"><i class="mdi-image-edit right"></i>Ajouter un utilisateur</a>
+                </div>
+            </div>
+        </div>
+        <h4 class="header">Liste des utilisateurs:</h4>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="table-responsive">
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th data-field="name">Nom d'utilisateur</th>
+                                <th data-field="name">E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>    {% for user in documents %}
+
+                            <tr>
+                                <td>{{user.username}}</td>
+                                <td>{{user.email}}</td>
+
+                                
+                            </tr>    {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

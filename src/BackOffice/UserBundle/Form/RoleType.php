@@ -14,6 +14,7 @@ class RoleType extends AbstractType {
                 ->add('roles', 'choice', array(
                     'required' => true,
                     'multiple' => true,
+                    'expanded' => true,
                     'choices' => $this->refactorRoles($options['roles'])
                 ))
         ;
