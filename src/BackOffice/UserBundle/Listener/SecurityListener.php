@@ -26,7 +26,7 @@ class SecurityListener {
             if ($this->securityContext->getToken() != null) {
                 $token = $this->securityContext->getToken();
                 $user = $token->getUser();
-                $roles = $user->getRoles();
+                $roles = $user->getGroups()->getRoles();
                 $valid = true;
                 $route = $event->getRequest()->attributes->get('_route');
                 foreach ($roles as $role) {
