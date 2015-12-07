@@ -9,3 +9,7 @@ eleve_json_result:
     defaults: { _controller: "BackOfficeSchoolBundle:Eleve:Json" }
     options:
         expose: true
+        
+eleve_new:
+    path:     /new
+    defaults: { _controller: "BackOfficeSchoolBundle:Eleve:new" }

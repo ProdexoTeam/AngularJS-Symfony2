@@ -1,0 +1,24 @@
+{% extends  "::base.html.twig" %}
+{% block body %}
+
+
+    <div ng-controller="AddController">
+
+        List des eleves :
+        <ul><li ng-repeat="item in eleve">{[{item.name}]}</li></ul>
+        <hr />
+
+        Ajout d'eleve :
+        <input type="text" ng-model="newEleve">
+        <button ng-click="add()">Add</button>
+    </div>
+  
+
+
+
+    {% block javascripts %}
+
+        <script src="{{ asset('js/json.js') }}"></script>
+
+    {% endblock %}  
+{% endblock %}  

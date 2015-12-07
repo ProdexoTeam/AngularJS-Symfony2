@@ -1,0 +1,10 @@
+api_list:
+    type: rest
+    resource: "@BackOfficeSchoolBundle/Controller/EleveController.php"
+    name_prefix:  api_test_
+    expose: true
+api_add:
+    type: rest
+    resource: "@BackOfficeSchoolBundle/Controller/EleveController.php"
+    name_prefix:  api_test_
+    expose: true

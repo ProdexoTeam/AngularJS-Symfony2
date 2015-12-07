@@ -5,15 +5,42 @@
  */
 
 
-function membresController ($scope, $http){
-     $scope.showMembres = function(){
-        $http.get(Routing.generate('eleve_json_result', { id: 10 }))
-            .success(function(response){  $scope.eleve = response; console.log(response); })
-            .error(function(response){ alert('Une erreur est survenue'); console.log(response); });
- 
+function membresController($scope, $http) {
+    $scope.showMembres = function () {
+        $http.get('http://localhost/AngularJS-Symfony2/web/app_dev.php/api/index')
+                .success(function (response) {
+                    $scope.eleve = response;
+                    console.log(response);
+                })
+                .error(function (response) {
+                    alert('Une erreur est survenue');
+                    console.log(response);
+                });
+
     }
     $scope.showMembres();
+}
+
+function AddController($scope, $http) {
+    membresController($scope, $http);
+    $scope.name = "za3ma"
+
+    $scope.add = function () {
+        $scope.eleve.push($scope.newEleve);
+        $http.get('http://localhost/AngularJS-Symfony2/web/app_dev.php/api/add?valeur='+$scope.newEleve)
+                .success(function (response) {
+                    $scope.eleve = response;
+                    $scope.showMembres()
 
 
+                    console.log(response);
+
+                })
+                .error(function (response) {
+                    alert('Une erreur est survenue');
+                    console.log(response);
+                });
+
+    }
 
 }

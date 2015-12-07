@@ -13,7 +13,13 @@ function membresController ($scope, $http){
  
     }
     $scope.showMembres();
-
-
-
+}
+function addController ($scope, $http){
+     $scope.showEleve = function(){
+        $http.post(Routing.generate('eleve_json_result'))
+            .success(function(response){  $scope.eleve = response; console.log(response); })
+            .error(function(response){ alert('Une erreur est survenue'); console.log(response); });
+ 
+    }
+    $scope.showMembres();
 }

@@ -5,59 +5,61 @@ namespace BackOffice\SchoolBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BackOffice\SchoolBundle\Document\Eleve;
 use BackOffice\SchoolBundle\Form\EleveType;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 class EleveController extends Controller {
 
-    public function indexAction() {
+    public function getIndexAction() {
 
         $dm = $this->get('doctrine_mongodb')->getManager();
 
         $eleve = $dm->getRepository('BackOfficeSchoolBundle:Eleve')
                 ->findAll();
-        
 
-        return $this->render('BackOfficeSchoolBundle:Eleve:index.html.twig', array('eleves' => $eleve));
+
+        return $eleve;
     }
-    
+
     //////////////////////////// return Json ////////////////////////////////////////////////
-    
-     public function JsonAction() {
-        $dm = $this->get('doctrine_mongodb')->getManager();
-
-        $eleve = $dm->getRepository('BackOfficeSchoolBundle:Eleve')->findAll();
-        $retour = array();
-        foreach ($eleve as $key => $value) {
-
-            $retour[$key]["id"] = $value->getId();
-            $retour[$key]["name"] = $value->getName();
-            $retour[$key]["classe"] = $value->getClasse()->getName();
-        }
-
-        $response = json_encode($retour);
-        return new Response($response, 200, array('Content-Type' => 'application/json'));
-         // var_dump($response);exit;
-    }
+//     public function JsonAction() {
+//        $dm = $this->get('doctrine_mongodb')->getManager();
+//
+//        $eleve = $dm->getRepository('BackOfficeSchoolBundle:Eleve')->findAll();
+//        $retour = array();
+//        foreach ($eleve as $key => $value) {
+//
+//            $retour[$key]["id"] = $value->getId();
+//            $retour[$key]["name"] = $value->getName();
+//            $retour[$key]["classe"] = $value->getClasse()->getName();
+//        }
+//
+//        $response = json_encode($retour);
+//        return new Response($response, 200, array('Content-Type' => 'application/json'));
+//         // var_dump($response);exit;
+//    }
 
     public function addAction() {
+
+        $request = $this->get('request');
+        $var = $request->query->get("valeur");
+        if ($request->getMethod() == 'GET') {
+            $eleve = new Eleve();
+            $eleve->setName($var);
+            $em = $this->get('doctrine_mongodb')->getManager();
+            $em->persist($eleve);
+            $em->flush();
+            return $eleve;
+        }
+    }
+    
+        public function newAction() {
         $eleve = new Eleve();
         $form = $this->createForm(new EleveType(), $eleve);
-        $request = $this->get('request');
-        if ($request->getMethod() == 'POST') {
 
-            $form->bind($request);
-            //echo "<pre>";print_r($page);exit;
-            if ($form->isValid()) {
-                $em = $this->get('doctrine_mongodb')->getManager();
-                $em->persist($eleve);
-                $em->flush();
-                return $this->redirect($this->generateUrl('eleve'));
-            } else {
-                echo $form->getErrors();
-            }
-        }
-        return $this->render('BackOfficeSchoolBundle:Eleve:add.html.twig', array('form' => $form->createView()));
+        return $this->render('BackOfficeSchoolBundle:Eleve:new.html.twig', array(
+                    'test' => $eleve,
+                    'form' => $form->createView()
+        ));
     }
 
 }
